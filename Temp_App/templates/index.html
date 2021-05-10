@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Templates</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css\style.css' %}">
+</head>
+<body>
+<form action="\add-user" method="post">
+{% csrf_token %}
+    <div> 
+        <h1> All Users </h1>
+    </div>
+    <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in all_users %}
+        <tr>
+            <td> {{ user.id }} </td>
+            <td> {{ user.first_name }} </td>
+            <td> {{ user.email }} </td>
+            <td> {{ user.age }} </td>
+        </tr>
+        {% endfor %}
+    
+    </tbody>
+</table><hr/>
+
+    <div> 
+        <label> First Name: </label>
+        <input type="text" name ="first_name">
+        <label> Last Name: </label>
+        <input type="text" name ="last_name">
+        <label> Email: </label>
+        <input type="text" name ="email">
+        <label> Age: </label>
+        <input type="age" name ="age">
+        <button> Add User </button>
+    <div>
+</form>
+
+</body>
+</html>
+
